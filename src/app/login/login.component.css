@@ -1,0 +1,45 @@
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background: #000; /* or your gradient */
+}
+
+.page-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* full viewport height */
+}
+
+.background-radial-gradient {
+  flex: 1; /* take remaining space */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.background-radial-gradient {
+  background: radial-gradient(circle at top left, #ff7e5f, #feb47b, #86a8e7, #91eae4);
+  background-size: 400% 400%;
+  animation: gradientAnimation 15s ease infinite;
+  overflow: hidden;
+}
+
+@keyframes gradientAnimation {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.footer {
+  background: rgba(0, 0, 0, 0.3);
+  color: #ddd;
+  backdrop-filter: blur(6px);
+}
+.footer a {
+  color: hsl(36, 84%, 45%);
+  text-decoration: none;
+  font-weight: 500;
+}

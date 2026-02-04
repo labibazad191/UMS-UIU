@@ -1,0 +1,24 @@
+.background-radial-gradient {
+  background: radial-gradient(circle at top left, #ff7e5f, #feb47b, #86a8e7, #91eae4);
+  background-size: 400% 400%;
+  animation: gradientAnimation 15s ease infinite;
+  overflow: hidden;
+}
+
+@keyframes gradientAnimation {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.responsive-img {
+  max-width: 100%;   /* scales down to fit its container */
+  height: auto;      /* maintains aspect ratio */
+  width: auto;       /* optional: let browser calculate width */
+  display: block;    /* removes extra inline spacing */
+  object-fit: contain; /* keeps entire image visible */
+}
+
+/* Optional: set a max height for logos */
+.responsive-img {
+  max-height: 150px;  /* adjust this value as needed */
+}

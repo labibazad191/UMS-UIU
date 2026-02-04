@@ -1,0 +1,143 @@
+<div class="container-fluid">
+  <!-- Radial background -->
+  <section class="background-radial-gradient overflow-hidden">
+
+
+    
+  </section>
+
+  <div class="row gx-0">
+    <!-- Sidebar -->
+    <div class="col-sm-auto bg-light sticky-top p-0">
+      <div class="d-flex flex-sm-column flex-row flex-nowrap align-items-center">
+        <a routerLink="/Dashboard" class="d-block p-3 link-dark text-decoration-none">
+          <img src="../assets/img/favicon-32x32.png" alt="Logo" class="img-fluid">
+        </a>
+        <ul class="nav nav-pills nav-flush flex-sm-column flex-row flex-nowrap mb-auto mx-auto text-center align-items-center">
+          <li class="nav-item">
+            <a routerLink="/dashboard" class="nav-link py-3 px-3 bg-light text-grey">
+              <i class="bi-house fs-3"></i>
+            </a>
+          </li>
+          <li>
+            <a routerLink="/addStudent" class="nav-link py-3 px-3 bg-light">
+              <i class="bi-person-plus fs-3"></i>
+            </a>
+          </li>
+          <li>
+            <a routerLink="/actionMark" class="nav-link py-3 px-3 bg-light">
+              <i class="bi-cloud-plus fs-3"></i>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="nav-link py-3 px-3 bg-light">
+              <i class="bi-book fs-3"></i>
+            </a>
+          </li>
+          <li>
+            <a routerLink="/studentList" class="nav-link py-3 px-3 text-bg-primary">
+              <i class="bi-people fs-3"></i>
+            </a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle bg-light" href="#" data-bs-toggle="dropdown">
+              <img src="../assets/img/labib-azad.jpg" width="40" class="rounded-circle">
+            </a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="#" (click)="OnUserLogout()">Log out</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Main content -->
+    <div class="col-sm p-3 min-vh-100">
+      <div class="container-fluid">
+        <!-- Header controls -->
+        <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-3">
+          <ul class="nav nav-pills">
+            <li class="nav-item">
+              <a href="#" class="nav-link active" data-bs-toggle="tooltip" title="List">
+                <i class="bx bx-list-ul"></i>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link" data-bs-toggle="tooltip" title="Grid">
+                <i class="bx bx-grid-alt"></i>
+              </a>
+            </li>
+          </ul>
+          <a routerLink="/addStudent" class="btn btn-primary">
+            <i class="bx bx-plus me-1"></i> Add New
+          </a>
+          <div class="dropdown">
+            <a class="btn btn-link text-muted py-1 shadow-none dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+              <i class="bx bx-dots-horizontal-rounded"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Student table -->
+        <div class="card shadow-sm rounded-3 p-4 bg-white">
+          <div class="table-responsive">
+            <table class="table table-bordered mb-0 text-center align-middle">
+              <thead class="table-light">
+                <tr>
+                  <th>#</th>
+                  <th>Student Name</th>
+                  <th>Profile</th>
+                  <th>Email</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let Student of studentsList; let i = index">
+                  <td>{{i + 1}}</td>
+                  <td class="d-flex align-items-center">
+                    <img class="rounded-circle me-2" [src]="Student.image" width="40" height="40" alt="">
+                    <div class="text-start">
+                      <h6 class="mb-0">{{Student.first_name}} {{Student.last_name}}</h6>
+                      <small>
+                        <i class="bi bi-telephone-fill text-warning"></i> {{Student.phone_number}}<br>
+                        <i class="bi bi-info-circle-fill text-info"></i> {{Student.age}} years
+                      </small>
+                    </div>
+                  </td>
+                  <td><span class="badge bg-success">{{Student.proffesion}}</span></td>
+                  <td>{{Student.email}}</td>
+                  <td>
+                    <div class="d-flex justify-content-end gap-2">
+                      <span class="bi bi-trash-fill text-danger fs-5" (click)="OnDeletedStudent(Student)"></span>
+                      <span class="bi bi-pencil-fill text-success fs-5"></span>
+                      <span class="bi bi-eye-fill text-primary fs-5" [routerLink]="['/viewStudent', Student.id]"></span>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Pagination -->
+          <div class="d-flex justify-content-between align-items-center mt-4">
+            <p class="mb-0">Showing 1 to 10</p>
+            <ul class="pagination mb-0">
+              <li class="page-item disabled"><a class="page-link" href="#"><i class="mdi mdi-chevron-left"></i></a></li>
+              <li class="page-item active"><a class="page-link" href="#">1</a></li>
+              <li class="page-item"><a class="page-link" href="#">2</a></li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <li class="page-item"><a class="page-link" href="#">4</a></li>
+              <li class="page-item"><a class="page-link" href="#">5</a></li>
+              <li class="page-item"><a class="page-link" href="#"><i class="mdi mdi-chevron-right"></i></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
